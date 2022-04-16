@@ -1,0 +1,17 @@
+.gitignore
+.travis.yml
+README.md
+api/openapi.yaml
+api_witness.go
+client.go
+configuration.go
+docs/ResponseBody.md
+docs/Witness.md
+docs/WitnessApi.md
+git_push.sh
+go.mod
+go.sum
+model_response_body.go
+model_witness.go
+response.go
+utils.go

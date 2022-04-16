@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: pingdongyi@gmail.com
+    name: MMSNET
+    url: http://br.mmsnet.net
+  description: 接口文档描述
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: 接口文档
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- description: 见证人
+  name: witness
+paths:
+  /self/witnesslist:
+    post:
+      description: 返回见证人列表
+      operationId: list witness
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBody'
+          description: ResponseBody
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBody'
+          description: unexpected error
+      tags:
+      - witness
+components:
+  schemas:
+    Witness:
+      example:
+        CreateBlockTime: 6
+        Score: 1
+        Vote: 5
+        Payload: ""
+        Addr: Addr
+      properties:
+        Addr:
+          type: string
+        CreateBlockTime:
+          format: int64
+          type: integer
+        Payload:
+          format: string
+        Score:
+          format: int64
+          type: integer
+        Vote:
+          format: int64
+          type: integer
+    ResponseBody:
+      example:
+        Data:
+        - CreateBlockTime: 6
+          Score: 1
+          Vote: 5
+          Payload: ""
+          Addr: Addr
+        - CreateBlockTime: 6
+          Score: 1
+          Vote: 5
+          Payload: ""
+          Addr: Addr
+        Code: 0
+      properties:
+        Code:
+          format: int32
+          type: integer
+        Data:
+          items:
+            $ref: '#/components/schemas/Witness'
+          type: array
